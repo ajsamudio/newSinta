@@ -3,7 +3,7 @@
   "Ethereal Romanticism with Celestial Whimsy"
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Alice&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Lato:wght@300;400&family=Pinyon+Script&display=swap');
 
 :root {
     /* Color Palette */
@@ -481,6 +481,170 @@ footer {
     border-color: var(--accent-gold);
     transform: translateY(-1px);
     box-shadow: 0 6px 25px rgba(212, 175, 55, 0.25);
+}
+
+/* --- About Section & Flip Card --- */
+.about-section {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    perspective: 1500px;
+    /* For 3D flip effect */
+}
+
+.flip-card {
+    width: 100%;
+    height: 700px;
+    /* Fixed height for stability */
+    background: transparent;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    background: rgba(249, 245, 240, 0.8);
+    /* More opaque */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: rgba(243, 229, 229, 0.9);
+}
+
+.about-container {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+    /* Fill height */
+}
+
+.about-image {
+    flex: 1;
+    height: 100%;
+    background-color: var(--bg-blush);
+    /* Fallback color */
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Arch shape for the image as in screenshot */
+    clip-path: ellipse(80% 100% at 50% 100%);
+    /* Custom arch shape */
+    border-radius: 300px 300px 0 0;
+    /* Fallback arch */
+}
+
+.about-content,
+.about-content-full {
+    flex: 1.2;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.about-title {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 4rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+.read-more-btn,
+.back-btn {
+    align-self: flex-end;
+    margin-top: auto;
+    background: none;
+    border: none;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.read-more-btn:hover,
+.back-btn:hover {
+    color: var(--text-main);
+    transform: translateX(5px);
+}
+
+.back-btn:hover {
+    transform: translateX(-5px);
+}
+
+.read-more-btn span,
+.back-btn span {
+    font-size: 1.2rem;
+}
+
+/* Mobile Adjustments for About Section */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 1rem;
+    }
+
+    .flip-card {
+        min-height: 800px;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-image {
+        width: 100%;
+        height: 300px;
+        min-height: 300px;
+    }
+
+    .about-content,
+    .about-content-full {
+        padding: 2rem;
+    }
+
+    .about-title {
+        font-size: 3rem;
+    }
 }
 
 /* --- Mobile Menu Button --- */

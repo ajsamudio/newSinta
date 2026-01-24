@@ -78,4 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
             track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
         });
     }
+
+    // --- Flip Card Logic ---
+    const flipCardInner = document.querySelector('.flip-card-inner');
+    const readMoreBtn = document.querySelector('.read-more-btn');
+    const backBtn = document.querySelector('.back-btn');
+
+    if (flipCardInner && readMoreBtn && backBtn) {
+        readMoreBtn.addEventListener('click', () => {
+            flipCardInner.classList.add('flipped');
+        });
+
+        backBtn.addEventListener('click', () => {
+            flipCardInner.classList.remove('flipped');
+        });
+    }
 });
