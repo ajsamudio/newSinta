@@ -80,17 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Flip Card Logic ---
-    const flipCardInner = document.querySelector('.flip-card-inner');
-    const readMoreBtn = document.querySelector('.read-more-btn');
-    const backBtn = document.querySelector('.back-btn');
+    const flipCards = document.querySelectorAll('.flip-card');
 
-    if (flipCardInner && readMoreBtn && backBtn) {
-        readMoreBtn.addEventListener('click', () => {
-            flipCardInner.classList.add('flipped');
-        });
+    flipCards.forEach(card => {
+        const inner = card.querySelector('.flip-card-inner');
+        const readMore = card.querySelector('.read-more-btn');
+        const back = card.querySelector('.back-btn');
 
-        backBtn.addEventListener('click', () => {
-            flipCardInner.classList.remove('flipped');
-        });
-    }
+        if (inner && readMore && back) {
+            readMore.addEventListener('click', () => {
+                inner.classList.add('flipped');
+            });
+
+            back.addEventListener('click', () => {
+                inner.classList.remove('flipped');
+            });
+        }
+    });
 });
