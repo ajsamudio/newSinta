@@ -80,20 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Flip Card Logic ---
-    const flipCards = document.querySelectorAll('.flip-card');
+    const books = document.querySelectorAll('.book');
 
-    flipCards.forEach(card => {
-        const inner = card.querySelector('.flip-card-inner');
-        const readMore = card.querySelector('.read-more-btn');
-        const back = card.querySelector('.back-btn');
+    books.forEach(book => {
+        const flippable = book.querySelector('.flippable');
+        const readMore = book.querySelector('.read-more-btn');
+        const back = book.querySelector('.back-btn');
 
-        if (inner && readMore && back) {
+        if (flippable && readMore && back) {
             readMore.addEventListener('click', () => {
-                inner.classList.add('flipped');
+                flippable.classList.add('flipped');
             });
 
             back.addEventListener('click', () => {
-                inner.classList.remove('flipped');
+                flippable.classList.remove('flipped');
             });
         }
     });

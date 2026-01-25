@@ -348,7 +348,7 @@ nav a:hover {
     box-shadow: 0 6px 25px rgba(212, 175, 55, 0.25);
 }
 
-/* --- About Section & Book Flip Card --- */
+/* --- Book Layout (Half-Page Flip) --- */
 .about-section {
     padding: 8rem 2rem;
     max-width: 1200px;
@@ -356,58 +356,62 @@ nav a:hover {
     perspective: 2000px;
 }
 
-.flip-card {
+.book {
     width: 100%;
     height: 700px;
-    background: transparent;
-}
-
-.flip-card-inner {
+    display: flex;
     position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: left;
-    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transform-style: preserve-3d;
-    transform-origin: bottom right;
-    /* Flip from bottom right corner */
+    perspective: 2000px;
 }
 
-.flip-card-inner.flipped {
-    transform: rotateY(-180deg) rotateX(2deg);
-    /* Realistic tilt */
-}
-
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-    width: 100%;
+.book-page {
+    flex: 1;
     height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 4px;
+    position: relative;
     background: #f4ecd8;
     /* Parchment color */
     background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
     border: 1px solid rgba(74, 64, 58, 0.15);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15), inset 0 0 100px rgba(74, 64, 58, 0.05);
+    box-shadow: inset 0 0 100px rgba(74, 64, 58, 0.05);
     overflow: hidden;
 }
 
-.flip-card-back {
-    transform: rotateY(180deg);
-    background: #f0e6cf;
+.left-page {
+    border-radius: 4px 0 0 4px;
+    z-index: 1;
 }
 
-.about-container {
-    display: flex;
+.right-page {
+    border-radius: 0 4px 4px 0;
+    z-index: 2;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    /* Flip around the spine */
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.right-page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.page-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    align-items: stretch;
-    position: relative;
+    backface-visibility: hidden;
+    background: inherit;
+    display: flex;
+    flex-direction: column;
 }
 
-/* The Spine */
-.about-container::before {
+.page-side.back {
+    transform: rotateY(180deg);
+}
+
+/* The Spine Shadow */
+.book::before {
     content: '';
     position: absolute;
     left: 50%;
@@ -425,31 +429,9 @@ nav a:hover {
     pointer-events: none;
 }
 
-/* Page Shadows */
-.about-container::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: linear-gradient(to right,
-            rgba(0, 0, 0, 0.05) 0%,
-            rgba(0, 0, 0, 0) 5%,
-            rgba(0, 0, 0, 0) 45%,
-            rgba(0, 0, 0, 0.1) 50%,
-            rgba(0, 0, 0, 0) 55%,
-            rgba(0, 0, 0, 0) 95%,
-            rgba(0, 0, 0, 0.05) 100%);
-    z-index: 5;
-    pointer-events: none;
-}
-
 .about-image {
-    flex: 1;
+    width: 100%;
     height: 100%;
-    overflow: hidden;
-    position: relative;
     padding: 3rem;
     display: flex;
     align-items: center;
@@ -467,17 +449,15 @@ nav a:hover {
 
 .about-content,
 .about-content-full {
-    flex: 1;
-    padding: 3rem 2rem 3rem 6rem;
+    padding: 4rem 3rem 4rem 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    z-index: 2;
+    height: 100%;
 }
 
 .about-content-full {
-    padding: 3rem 6rem 3rem 2rem;
+    padding: 4rem 5rem 4rem 3rem;
 }
 
 .about-title {
@@ -492,7 +472,6 @@ nav a:hover {
     margin-bottom: 1.2rem;
     font-size: 1.1rem;
     color: var(--text-light);
-    max-width: 95%;
     line-height: 1.6;
 }
 
@@ -510,20 +489,6 @@ nav a:hover {
     border: none;
     clip-path: polygon(100% 0, 0 100%, 100% 100%);
     z-index: 30;
-    color: transparent;
-    /* Remove text */
-    pointer-events: auto;
-}
-
-.read-more-btn::after,
-.back-btn::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
 }
 
 .back-btn {
@@ -537,7 +502,6 @@ nav a:hover {
     width: 120px;
     height: 120px;
     background: var(--text-main);
-    transform: scale(1.05);
 }
 
 /* --- Footer --- */
@@ -581,23 +545,17 @@ footer {
         padding: 4rem 1rem;
     }
 
-    .flip-card {
-        min-height: 800px;
-    }
-
-    .about-container {
+    .book {
+        height: auto;
         flex-direction: column;
     }
 
-    .about-container::before,
-    .about-container::after {
+    .book::before {
         display: none;
     }
 
-    .about-image {
-        width: 100%;
-        height: 300px;
-        min-height: 300px;
+    .book-page {
+        min-height: 400px;
     }
 
     .about-content,
