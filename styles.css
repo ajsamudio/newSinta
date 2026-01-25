@@ -66,40 +66,29 @@ a {
 /* --- Header --- */
 header {
     padding: 0.8rem 1rem;
-    /* Reduced padding for shorter height */
     text-align: center;
     position: fixed;
-    /* Fixed to stay on top */
     top: 0;
     width: 100%;
-    /* More subtle gradient that fades out before the bottom edge */
     background: linear-gradient(to bottom, rgba(249, 245, 240, 0.8) 0%, rgba(249, 245, 240, 0) 90%);
     backdrop-filter: blur(2px);
-    /* Reduced blur for seamlessness */
     z-index: 1000;
     transition: all 0.5s ease;
-    /* Ensure the header doesn't block clicks on the very edge unless hovered */
     pointer-events: none;
-    /* Mask the bottom edge of the blur for true seamlessness */
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
-/* Enable pointer events on contents */
 header .logo,
 header nav {
     pointer-events: auto;
 }
 
-/* Hovering over the header area (which includes logo) reveals the nav */
 header:hover {
     background: rgba(249, 245, 240, 0.95);
-    /* More solid on hover */
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
     padding-bottom: 2rem;
-    /* Expand slightly */
-    /* Remove mask on hover so the whole menu is visible */
     -webkit-mask-image: none;
     mask-image: none;
 }
@@ -113,10 +102,8 @@ header:hover {
 
 .logo-image {
     width: 60px;
-    /* Much smaller size */
     height: auto;
     display: block;
-    /* Blend the white background into the page texture */
     mix-blend-mode: multiply;
     filter: contrast(1.1) brightness(0.95);
 }
@@ -134,16 +121,12 @@ nav ul {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-
-    /* Hidden by default */
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.5s ease, transform 0.5s ease;
     pointer-events: none;
-    /* Prevent clicking when hidden */
 }
 
-/* Show nav when header is hovered */
 header:hover nav ul {
     opacity: 1;
     transform: translateY(0);
@@ -158,20 +141,13 @@ nav a:hover {
 /* --- Hero Section --- */
 .hero {
     height: 100vh;
-    /* Full height */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    /* overflow: hidden;  <-- Removed to allow border to overlap */
     padding: 2rem;
     margin-top: 0;
-}
-
-.hero-bg {
-    /* Not used if using img tag, but good fallback */
-    background: radial-gradient(circle at center, var(--bg-cream), var(--bg-blush));
 }
 
 .hero-image-container {
@@ -181,12 +157,10 @@ nav a:hover {
     width: 100%;
     height: 100%;
     z-index: -1;
-    /* Seamless Fade Mask */
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 }
 
-/* Vignette effect for "old book" look */
 .hero-image-container::after {
     content: '';
     position: absolute;
@@ -201,7 +175,6 @@ nav a:hover {
 .hero-content {
     max-width: 800px;
     animation: fadeIn 2s ease-out;
-    /* Removed boxy background/blur */
     background: transparent;
     padding: 1rem;
 }
@@ -211,7 +184,6 @@ nav a:hover {
     margin-bottom: 1rem;
     line-height: 1.1;
     color: #3e3632;
-    /* Soft glow for readability without a box */
     text-shadow: 0 0 20px rgba(249, 245, 240, 0.8), 0 0 40px rgba(249, 245, 240, 0.6);
 }
 
@@ -225,15 +197,9 @@ nav a:hover {
     position: relative;
 }
 
-.narrative p {
-    font-size: 1.4rem;
-    color: var(--text-light);
-}
-
 /* --- Collection Carousel --- */
 .collection {
     padding: 4rem 0;
-    /* Full width for carousel */
 }
 
 .section-title {
@@ -246,7 +212,6 @@ nav a:hover {
     width: 100%;
 }
 
-/* Decorative flourishes */
 .section-title::after {
     content: "❦";
     display: block;
@@ -256,28 +221,18 @@ nav a:hover {
     opacity: 0.6;
 }
 
-/* Carousel Layout */
 .carousel-track-container {
     overflow-x: auto;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    /* Hide scrollbar but allow scroll */
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE 10+ */
     padding: 2rem 0;
-    /* Space for shadows */
-
-    /* Show exactly 3 items: (300px * 3) + (2rem gap * 2) = 900 + 72 = 972px */
     max-width: 972px;
     margin: 0 auto;
-    /* Center the track */
 }
 
 .carousel-track-container::-webkit-scrollbar {
     display: none;
-    /* Chrome/Safari */
 }
 
 .carousel-wrapper {
@@ -285,14 +240,12 @@ nav a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 3rem;
-    /* Space for buttons */
 }
 
 .carousel-track {
     display: flex;
     gap: 2rem;
     width: max-content;
-    /* Ensure items sit side by side */
 }
 
 .product-card {
@@ -301,13 +254,11 @@ nav a:hover {
     border: none;
     text-align: center;
     position: relative;
-    /* Fixed width for carousel items */
     min-width: 300px;
     width: 300px;
     scroll-snap-align: center;
 }
 
-/* Carousel Buttons */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -324,17 +275,13 @@ nav a:hover {
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
-    /* Ornate detail */
     box-shadow: inset 0 0 0 2px var(--bg-cream), inset 0 0 0 3px var(--accent-gold);
 }
 
 .carousel-btn:hover {
     background: #fff;
     transform: translateY(-50%) scale(1.1);
-    box-shadow:
-        inset 0 0 0 2px #fff,
-        inset 0 0 0 3px var(--accent-gold),
-        0 0 15px var(--glow-gold);
+    box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px var(--accent-gold), 0 0 15px var(--glow-gold);
 }
 
 .prev-btn {
@@ -351,7 +298,6 @@ nav a:hover {
     margin-bottom: 1.5rem;
     object-fit: cover;
     border-radius: 50%;
-    /* Circular images for a locket/cameo feel */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     filter: sepia(0.2);
@@ -377,31 +323,221 @@ nav a:hover {
     letter-spacing: 0.1em;
 }
 
-/* --- Giving Back --- */
-.giving-back {
+/* --- Button Style --- */
+.btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    background: linear-gradient(135deg, rgba(249, 245, 240, 0.1), rgba(212, 175, 55, 0.05));
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    font-size: 0.8rem;
+    transition: all 0.4s ease;
+    position: relative;
+    border: 3px solid rgba(212, 175, 55, 0.6);
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+}
+
+.btn-primary:hover {
+    background: rgba(249, 245, 240, 0.4);
+    border-color: var(--accent-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.25);
+}
+
+/* --- About Section & Book Flip Card --- */
+.about-section {
     padding: 8rem 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 6rem;
     max-width: 1200px;
     margin: 0 auto;
+    perspective: 2000px;
 }
 
-.giving-content {
-    flex: 1;
-    min-width: 300px;
+.flip-card {
+    width: 100%;
+    height: 700px;
+    background: transparent;
 }
 
-.giving-image {
-    flex: 1;
-    min-width: 300px;
-    height: 500px;
-    border-radius: 200px 200px 20px 20px;
-    /* Arch shape */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d;
+    transform-origin: bottom right;
+    /* Flip from bottom right corner */
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(-180deg) rotateX(2deg);
+    /* Realistic tilt */
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 4px;
+    background: #f4ecd8;
+    /* Parchment color */
+    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    border: 1px solid rgba(74, 64, 58, 0.15);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15), inset 0 0 100px rgba(74, 64, 58, 0.05);
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: #f0e6cf;
+}
+
+.about-container {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+    position: relative;
+}
+
+/* The Spine */
+.about-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    transform: translateX(-50%);
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.1) 40%,
+            rgba(0, 0, 0, 0.15) 50%,
+            rgba(0, 0, 0, 0.1) 60%,
+            rgba(0, 0, 0, 0) 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Page Shadows */
+.about-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0) 5%,
+            rgba(0, 0, 0, 0) 45%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(0, 0, 0, 0) 55%,
+            rgba(0, 0, 0, 0) 95%,
+            rgba(0, 0, 0, 0.05) 100%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.about-image {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 500px 500px 0 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    filter: sepia(0.15);
+}
+
+.about-content,
+.about-content-full {
+    flex: 1;
+    padding: 3rem 2rem 3rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.about-content-full {
+    padding: 3rem 6rem 3rem 2rem;
+}
+
+.about-title {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3.5rem;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.about-text p {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 95%;
+    line-height: 1.6;
+}
+
+/* Page Curl Buttons */
+.read-more-btn,
+.back-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-gold);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+    z-index: 30;
+    color: transparent;
+    /* Remove text */
+    pointer-events: auto;
+}
+
+.read-more-btn::after,
+.back-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.back-btn {
+    right: auto;
+    left: 0;
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+.read-more-btn:hover,
+.back-btn:hover {
+    width: 120px;
+    height: 120px;
+    background: var(--text-main);
+    transform: scale(1.05);
 }
 
 /* --- Footer --- */
@@ -426,21 +562,6 @@ footer {
     position: relative;
 }
 
-.social-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--accent-gold);
-    transition: width 0.3s;
-}
-
-.social-links a:hover::after {
-    width: 100%;
-}
-
 /* Animations */
 @keyframes fadeIn {
     from {
@@ -452,229 +573,6 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* --- Button Style (Restored & Simplified) --- */
-.btn-primary {
-    display: inline-block;
-    padding: 0.8rem 2.5rem;
-    /* Softer background that fades */
-    background: linear-gradient(135deg, rgba(249, 245, 240, 0.1), rgba(212, 175, 55, 0.05));
-
-    color: var(--text-main);
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-weight: 500;
-    font-size: 0.8rem;
-    transition: all 0.4s ease;
-    position: relative;
-
-    /* Round golden border that blends */
-    border: 3px solid rgba(212, 175, 55, 0.6);
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
-}
-
-.btn-primary:hover {
-    background: rgba(249, 245, 240, 0.4);
-    border-color: var(--accent-gold);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.25);
-}
-
-/* --- About Section & Flip Card --- */
-.about-section {
-    padding: 8rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    perspective: 1500px;
-    /* For 3D flip effect */
-}
-
-.flip-card {
-    width: 100%;
-    height: 700px;
-    /* Fixed height for stability */
-    background: transparent;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: left;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-}
-
-.flip-card-inner.flipped {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 4px;
-    /* Sharper corners for a book */
-    background: #fff;
-    border: 1px solid rgba(74, 64, 58, 0.1);
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.1),
-        inset 0 0 100px rgba(74, 64, 58, 0.02);
-    overflow: hidden;
-}
-
-.flip-card-back {
-    transform: rotateY(180deg);
-    background: #fdfaf7;
-}
-
-.about-container {
-    display: flex;
-    height: 100%;
-    align-items: stretch;
-    position: relative;
-}
-
-/* The Spine */
-.about-container::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    transform: translateX(-50%);
-    background: linear-gradient(to right,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.05) 40%,
-            rgba(0, 0, 0, 0.1) 50%,
-            rgba(0, 0, 0, 0.05) 60%,
-            rgba(0, 0, 0, 0) 100%);
-    z-index: 10;
-    pointer-events: none;
-}
-
-/* Page Shadows */
-.about-container::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: linear-gradient(to right,
-            rgba(0, 0, 0, 0.02) 0%,
-            rgba(0, 0, 0, 0) 5%,
-            rgba(0, 0, 0, 0) 45%,
-            rgba(0, 0, 0, 0.05) 50%,
-            rgba(0, 0, 0, 0) 55%,
-            rgba(0, 0, 0, 0) 95%,
-            rgba(0, 0, 0, 0.02) 100%);
-    z-index: 5;
-    pointer-events: none;
-}
-
-.about-image {
-    flex: 1;
-    height: 100%;
-    background-color: var(--bg-blush);
-    overflow: hidden;
-    position: relative;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 400px 400px 0 0;
-    /* Arch shape */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.about-content,
-.about-content-full {
-    flex: 1;
-    padding: 4rem 3rem 4rem 5rem;
-    /* Extra padding for the spine */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-}
-
-.about-content-full {
-    padding: 4rem 5rem 4rem 3rem;
-    /* Reverse padding for back side */
-}
-
-.about-title {
-    font-family: 'Pinyon Script', cursive;
-    font-size: 3.5rem;
-    color: var(--text-main);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-.about-text p {
-    margin-bottom: 1.2rem;
-    font-size: 1.1rem;
-    color: var(--text-light);
-    max-width: 90%;
-}
-
-/* Tab Style Buttons */
-.read-more-btn,
-.back-btn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-    background: var(--accent-gold);
-    color: #fff;
-    padding: 1.5rem 2rem;
-    font-family: var(--font-ui);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.back-btn {
-    right: auto;
-    left: 0;
-    clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
-}
-
-.read-more-btn:hover,
-.back-btn:hover {
-    background: var(--text-main);
-    padding-right: 2.5rem;
-}
-
-.back-btn:hover {
-    padding-left: 2.5rem;
-}
-
-.read-more-btn span,
-.back-btn span {
-    font-size: 1rem;
 }
 
 /* Mobile Adjustments */
@@ -711,76 +609,53 @@ footer {
         font-size: 3rem;
     }
 
-    /* Fix Header Logo Cutoff */
     header {
         padding: 1rem 0.5rem;
     }
 
-    .logo {
-        font-size: 2rem;
-        /* Smaller logo */
-        margin-bottom: 0.2rem;
-    }
-
-    /* Fix Hero Text Overflow */
     .hero h1 {
         font-size: 2.5rem;
-        /* Much smaller to fit screen */
-        line-height: 1.2;
-        word-wrap: break-word;
-        /* Ensure long words wrap */
-        padding: 0 1rem;
-        /* Safety padding */
     }
 
     .hero p {
         font-size: 1.1rem;
-        padding: 0 1.5rem;
-        /* More padding on sides */
-        line-height: 1.6;
     }
 
-    /* Adjust Button */
     .btn-primary {
-        padding: 0.8rem 2rem;
-        font-size: 0.8rem;
         width: 80%;
-        /* Prevent it from being too wide or touching edges */
         max-width: 300px;
-    }
-
-    /* Carousel Mobile Adjustments */
-    .carousel-wrapper {
-        padding: 0 1rem;
-        /* Less padding on mobile */
     }
 
     .carousel-btn {
         display: none;
-        /* Hide buttons on mobile, use swipe */
-    }
-
-    .carousel-track-container {
-        padding: 1rem 0;
     }
 
     .product-card {
         min-width: 260px;
-        /* Slightly smaller cards */
         width: 260px;
     }
 
-    /* Mobile Nav Logic */
     .mobile-menu-btn {
         display: block;
         position: absolute;
         top: 1rem;
         right: 1rem;
+        background: none;
+        border: none;
+        z-index: 1002;
+    }
+
+    .mobile-menu-btn span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: var(--text-main);
+        margin: 5px 0;
+        transition: 0.3s;
     }
 
     nav ul {
         display: none;
-        /* Hidden by default */
         flex-direction: column;
         position: absolute;
         top: 100%;
@@ -788,10 +663,9 @@ footer {
         width: 100%;
         background: rgba(249, 245, 240, 0.98);
         padding: 2rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         opacity: 0;
         transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition: 0.3s;
     }
 
     nav ul.show {
@@ -800,35 +674,4 @@ footer {
         transform: translateY(0);
         pointer-events: all;
     }
-}
-
-/* --- Mobile Menu Button --- */
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    z-index: 1002;
-}
-
-.mobile-menu-btn span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: var(--text-main);
-    margin: 5px 0;
-    transition: 0.3s;
-}
-
-.mobile-menu-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.mobile-menu-btn.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
 }
