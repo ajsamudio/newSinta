@@ -57,11 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Carousel Logic ---
+    const trackContainer = document.querySelector('.carousel-track-container');
     const track = document.querySelector('.carousel-track');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
 
-    if (track && prevBtn && nextBtn) {
+    if (trackContainer && track && prevBtn && nextBtn) {
         // Function to get exact scroll amount (card width + gap)
         const getScrollAmount = () => {
             const card = document.querySelector('.product-card');
@@ -71,11 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         nextBtn.addEventListener('click', () => {
-            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            trackContainer.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
         });
 
         prevBtn.addEventListener('click', () => {
-            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+            trackContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
         });
     }
 
