@@ -18,21 +18,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // Stagger effect for elements appearing at the same time
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 150); // 150ms delay per item
+
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     // Select elements to animate
-    const animateElements = document.querySelectorAll('.product-card, .giving-content, .giving-image, .section-title');
+    // Added .book to ensure the story sections fade in
+    const animateElements = document.querySelectorAll('.product-card, .section-title, .book');
 
     animateElements.forEach(el => {
+        // Only set initial state if not already visible (to avoid hiding things on reload if scrolled)
+        // But for consistency we usually force it. 
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        el.style.transform = 'translateY(30px)'; // Increased distance slightly
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         observer.observe(el);
     });
 
@@ -86,16 +94,29 @@ document.addEventListener('DOMContentLoaded', () => {
     books.forEach(book => {
         const flippable = book.querySelector('.flippable');
         const readMore = book.querySelector('.read-more-btn');
-        const back = book.querySelector('.back-btn');
+        const backBtn = book.querySelector('.back-btn');
+        const backSide = book.querySelector('.page-side.back');
 
-        if (flippable && readMore && back) {
-            readMore.addEventListener('click', () => {
+        if (flippable && readMore) {
+            readMore.addEventListener('click', (e) => {
+                e.stopPropagation();
                 flippable.classList.add('flipped');
             });
 
-            back.addEventListener('click', () => {
-                flippable.classList.remove('flipped');
-            });
+            // Flip back when clicking the back button
+            if (backBtn) {
+                backBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    flippable.classList.remove('flipped');
+                });
+            }
+
+            // Also flip back when clicking anywhere on the back side for better UX
+            if (backSide) {
+                backSide.addEventListener('click', () => {
+                    flippable.classList.remove('flipped');
+                });
+            }
         }
     });
 });
