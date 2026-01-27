@@ -1,0 +1,47 @@
+<svg width="60" height="60" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" />
+    </filter>
+  </defs>
+
+  <!-- Expanded soft gray background to cover more area behind the strokes -->
+  <path d="M480,30 C380,10 250,100 220,180 C190,260 210,360 260,420 L140,400 L480,30 Z" 
+        fill="#A0938A" opacity="0.45" filter="url(#softBlur)" />
+  
+  <!-- Slightly wider light core for better contrast and "body" -->
+  <path d="M465,45 C390,30 280,120 250,200 C220,280 240,360 290,400 L140,400 L465,45 Z" 
+        fill="#F9F5F0" opacity="0.25" />
+
+  <!-- The Spine (Shaft) -->
+  <path d="M460,50 L140,400" stroke="#3e3632" stroke-width="12" stroke-linecap="round" fill="none" />
+
+  <!-- The Nib -->
+  <path fill="#1a1715" d="M140,400 L100,480 L180,440 Z" />
+  <path d="M125,445 L155,435" stroke="#F9F5F0" stroke-width="2" />
+
+  <!-- Detailed Feather Strokes (Barbs) on top -->
+  <g stroke="#4A403A" stroke-width="3" stroke-linecap="round">
+    <!-- Right side strokes -->
+    <path d="M440,70 Q480,100 480,150" fill="none" />
+    <path d="M420,90 Q470,130 460,180" fill="none" />
+    <path d="M400,110 Q460,160 440,210" fill="none" />
+    <path d="M380,130 Q450,190 420,240" fill="none" />
+    <path d="M360,150 Q440,220 400,270" fill="none" />
+    <path d="M340,170 Q430,250 380,300" fill="none" />
+    <path d="M320,190 Q420,280 360,330" fill="none" />
+    <path d="M300,210 Q410,310 340,360" fill="none" />
+    <path d="M280,230 Q400,340 320,390" fill="none" />
+    
+    <!-- Left side strokes -->
+    <path d="M440,70 Q400,60 380,80" fill="none" />
+    <path d="M420,90 Q380,80 360,100" fill="none" />
+    <path d="M400,110 Q360,100 340,120" fill="none" />
+    <path d="M380,130 Q340,120 320,140" fill="none" />
+    <path d="M360,150 Q320,140 300,160" fill="none" />
+    <path d="M340,170 Q300,160 280,180" fill="none" />
+    <path d="M320,190 Q280,180 260,200" fill="none" />
+    <path d="M300,210 Q260,200 240,220" fill="none" />
+    <path d="M280,230 Q240,220 220,240" fill="none" />
+  </g>
+</svg>

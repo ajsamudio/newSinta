@@ -43,6 +43,7 @@ body {
     line-height: 1.8;
     overflow-x: hidden;
     font-size: 18px;
+    cursor: url('quill.svg') 12 56, auto;
 }
 
 h1,
@@ -63,6 +64,12 @@ a {
     transition: color 0.3s ease;
 }
 
+a,
+button,
+[role="button"] {
+    cursor: url('quill.svg') 12 56, pointer;
+}
+
 /* --- Header --- */
 header {
     padding: 0.8rem 1rem;
@@ -81,7 +88,6 @@ header {
 
 header .logo,
 header nav,
-.home-icon-link,
 .mobile-menu-btn {
     pointer-events: auto;
 }
@@ -98,16 +104,19 @@ header:hover {
 .logo {
     margin-bottom: 0.5rem;
     display: inline-block;
-    cursor: pointer;
+    cursor: url('quill.svg') 12 56, pointer;
     transition: transform 0.3s ease;
 }
 
 .logo-image {
-    width: 60px;
+    width: 125px;
     height: auto;
     display: block;
     mix-blend-mode: multiply;
-    filter: contrast(1.1) brightness(0.95);
+    filter: brightness(1.08) contrast(1.05);
+    /* Increases whites to absolute white for multiply blend */
+    clip-path: circle(48%);
+    /* Physically removes the square corners of the image */
 }
 
 header:hover .logo {
@@ -214,18 +223,21 @@ nav a:hover {
 .faded-parchment::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('parchment-texture.png');
-    background-repeat: repeat;
-    background-color: rgba(245, 238, 225, 0.9);
+    top: -5%;
+    left: -5%;
+    right: -5%;
+    bottom: -5%;
+    background-image: url('parchment-smooth.png');
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(255, 248, 225, 0.7);
+    /* Warmer, slightly more opaque yellow */
     background-blend-mode: multiply;
+    /* Better texture visibility */
     z-index: -1;
-    /* Soft organic fade */
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    /* Light feathering on borders: defined center, soft edge */
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 95%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 95%);
     pointer-events: none;
 }
 
@@ -314,7 +326,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: url('quill.svg') 12 56, pointer;
     z-index: 10;
     transition: all 0.3s ease;
     box-shadow: inset 0 0 0 2px var(--bg-cream), inset 0 0 0 3px var(--accent-gold);
@@ -456,10 +468,12 @@ nav a:hover {
     flex: 1;
     height: 100%;
     position: relative;
-    background: #f4ecd8;
-    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-    border: 1px solid rgba(74, 64, 58, 0.15);
-    box-shadow: inset 0 0 100px rgba(74, 64, 58, 0.05);
+    background: #fffcf0;
+    background-image: url('parchment-smooth.png');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(74, 64, 58, 0.1);
+    box-shadow: inset 0 0 80px rgba(74, 64, 58, 0.03);
     overflow: hidden;
 }
 
@@ -493,8 +507,10 @@ nav a:hover {
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    background: #f4ecd8;
-    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+    background: #fffcf0;
+    background-image: url('parchment-smooth.png');
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
 }
@@ -612,7 +628,7 @@ nav a:hover {
     width: 100px;
     height: 100px;
     background: var(--accent-gold);
-    cursor: pointer;
+    cursor: url('quill.svg') 12 56, pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
     z-index: 30;
@@ -852,43 +868,7 @@ footer {
     }
 }
 
-/* --- Home Icon (Top Left) --- */
-.home-icon-link {
-    position: absolute;
-    left: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 42px;
-    height: 42px;
-    color: var(--text-main);
-    z-index: 1002;
-    transition: all 0.3s ease;
-    opacity: 0.7;
-    display: flex;
-    /* Centering svg */
-    align-items: center;
-    justify-content: center;
-}
 
-.home-icon-link:hover {
-    color: var(--accent-gold);
-    opacity: 1;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.home-icon-link svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
-}
-
-@media (max-width: 768px) {
-    .home-icon-link {
-        left: 1rem;
-        width: 34px;
-        height: 34px;
-    }
-}
 
 /* --- Planet Her Page Styles --- */
 .planet-her-section {
