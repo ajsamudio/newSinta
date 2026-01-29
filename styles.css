@@ -236,8 +236,8 @@ nav a:hover {
     /* Better texture visibility */
     z-index: -1;
     /* Light feathering on borders: defined center, soft edge */
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 95%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 95%);
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
     pointer-events: none;
 }
 
@@ -870,27 +870,27 @@ footer {
 
 
 
-/* --- Planet Her Page Styles --- */
-.planet-her-section {
+/* --- Pandora's Box Page Styles --- */
+.pandoras-box-section {
     padding: 8rem 2rem;
     min-height: 100vh;
     max-width: 1000px;
     margin: 0 auto;
 }
 
-.planet-header {
+.pandora-header {
     text-align: center;
     margin-bottom: 5rem;
 }
 
-.planet-header h1 {
+.pandora-header h1 {
     font-size: 5rem;
     font-family: var(--font-heading);
     margin-bottom: 1rem;
     font-weight: 400;
 }
 
-.planet-header p {
+.pandora-header p {
     font-size: 1.4rem;
     font-style: italic;
     color: var(--text-light);
@@ -1034,17 +1034,17 @@ footer {
     /* Keep text left aligned for readability, or right? Screenshot looks left aligned even on right-image rows? Actually screenshot row 2: "Chapter II" is on left. */
 }
 
-/* Mobile Responsive for Planet Her */
+/* Mobile Responsive for Pandora's Box */
 @media (max-width: 768px) {
-    .planet-her-section {
+    .pandoras-box-section {
         padding: 5rem 1rem;
     }
 
-    .planet-header h1 {
+    .pandora-header h1 {
         font-size: 3rem;
     }
 
-    .planet-header p {
+    .pandora-header p {
         font-size: 1.1rem;
         padding: 0 1rem;
     }
@@ -1076,5 +1076,49 @@ footer {
         width: auto;
         min-width: 160px;
         padding: 0.8rem 2.5rem;
+    }
+}
+
+/* --- Gold Text Reveal Effect --- */
+.gold-text-reveal {
+    /* Aspen Gold Gradient: Warmer, less lemon-yellow */
+    background: linear-gradient(90deg, #997F29, #FFD662, #FFF6D1, #FFD662, #997F29);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    /* Animations: Shimmer + Reveal (Slowed down) */
+    animation: goldShine 6s linear infinite, revealLeftToRight 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+    /* Reveal mechanic */
+    clip-path: inset(0 100% 0 0);
+
+    /* Ensure no double text-shadow ghosts with transparent text */
+    text-shadow: none !important;
+    /* Use drop-shadow for the glow effect instead */
+    filter: drop-shadow(0 0 15px rgba(255, 214, 98, 0.4));
+
+    /* Layout */
+    display: inline-block;
+    /* Required for clip-path to work nicely on text block */
+    width: 100%;
+    /* Ensure it takes full width if needed, or stick to auto */
+}
+
+@keyframes goldShine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+@keyframes revealLeftToRight {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
     }
 }

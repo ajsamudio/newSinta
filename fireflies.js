@@ -46,6 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const scaleArray = new Float32Array(firefliesCount);
     // Add phase for blinking animation
     const phaseArray = new Float32Array(firefliesCount);
+    // Add per-particle color
+    const colorArray = new Float32Array(firefliesCount * 3);
+
+    const color1 = new THREE.Color('#ffaa00'); // Standard Gold
+    const color2 = new THREE.Color('#ff7700'); // Vibrant Orange (Less Red)
+    const color3 = new THREE.Color('#ffcc00'); // Bright Yellow
 
     for (let i = 0; i < firefliesCount; i++) {
         positionArray[i * 3 + 0] = (Math.random() - 0.5) * 20; // x
@@ -54,11 +60,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         scaleArray[i] = Math.random();
         phaseArray[i] = Math.random() * Math.PI * 2;
+
+        // Randomly assign colors: 60% Standard, 20% Bold, 20% Bright
+        const randomColor = Math.random();
+        let selectedColor;
+        if (randomColor < 0.6) {
+            selectedColor = color1;
+        } else if (randomColor < 0.8) {
+            selectedColor = color2; // The "Bolder" ones
+            scaleArray[i] *= 1.2; // Make bold ones slightly larger too
+        } else {
+            selectedColor = color3;
+        }
+
+        colorArray[i * 3 + 0] = selectedColor.r;
+        colorArray[i * 3 + 1] = selectedColor.g;
+        colorArray[i * 3 + 2] = selectedColor.b;
     }
 
     firefliesGeometry.setAttribute('position', new THREE.BufferAttribute(positionArray, 3));
     firefliesGeometry.setAttribute('aScale', new THREE.BufferAttribute(scaleArray, 1));
     firefliesGeometry.setAttribute('aPhase', new THREE.BufferAttribute(phaseArray, 1));
+    firefliesGeometry.setAttribute('aColor', new THREE.BufferAttribute(colorArray, 3));
 
     // Material (Shader for custom glow/blink)
     // Using a shader material allows for efficient handling of the blinking/glowing logic on GPU
@@ -67,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             uTime: { value: 0 },
             uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
             uSize: { value: 150 }, // Base size
-            uColor: { value: new THREE.Color('#ffc700') } // Warmer yellow glow
         },
         vertexShader: `
             uniform float uTime;
@@ -76,8 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             attribute float aScale;
             attribute float aPhase;
+            attribute vec3 aColor;
             
             varying float vAlpha;
+            varying vec3 vColor;
 
             void main() {
                 vec4 modelPosition = modelMatrix * vec4(position, 1.0);
@@ -97,10 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Blinking effect
                 vAlpha = (sin(uTime * 1.5 + aPhase) + 1.0) * 0.5;
+                vColor = aColor;
             }
         `,
         fragmentShader: `
-            uniform vec3 uColor;
+            varying vec3 vColor;
             varying float vAlpha;
 
             void main() {
@@ -108,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 float distanceToCenter = distance(gl_PointCoord, vec2(0.5));
                 float strength = 0.05 / distanceToCenter - 0.1;
 
-                gl_FragColor = vec4(uColor, strength * vAlpha);
+                gl_FragColor = vec4(vColor, strength * vAlpha);
             }
         `,
         transparent: true,

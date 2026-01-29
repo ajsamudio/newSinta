@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.active = false;
             this.delay = Math.random() * 60 + 20;
             this.t = -0.1;
-            this.speed = 0.003 + Math.random() * 0.003;
+            this.speed = 0.0005 + Math.random() * 0.001; // Significantly slower speed
             const fromLeft = Math.random() > 0.5;
             this.startX = fromLeft ? -50 - Math.random() * 10 : 50 + Math.random() * 10;
             this.startY = -30 - Math.random() * 10;
@@ -225,10 +225,14 @@ document.addEventListener('DOMContentLoaded', () => {
             this.t += this.speed;
             this.material.uniforms.uT.value = this.t;
             let opacity = 0;
-            if (this.t < 0.2) opacity = (this.t - 0.0) / 0.2;
-            else if (this.t > 0.8) opacity = (1.0 - this.t) / 0.2;
-            else opacity = 1;
-            this.material.uniforms.uOpacity.value = Math.max(0, opacity * 0.85);
+            if (this.t < 0.1) {
+                opacity = this.t / 0.1;
+            } else {
+                opacity = 1.0 - ((this.t - 0.1) / 0.8);
+            }
+            opacity = Math.max(0, opacity);
+            // Apply easing to make the fade-out smoother and more transparent-looking
+            this.material.uniforms.uOpacity.value = Math.pow(opacity, 1.5) * 0.85;
             if (this.t >= 1.2) this.reset();
         }
     }
