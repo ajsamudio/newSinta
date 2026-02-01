@@ -199,7 +199,8 @@ nav a:hover {
 .hero h1 {
     font-size: 4.5rem;
     margin-bottom: 1rem;
-    line-height: 1.1;
+    line-height: 1.4;
+    padding: 0.5rem 0;
     color: #3e3632;
     text-shadow: 0 0 20px rgba(249, 245, 240, 0.8), 0 0 40px rgba(249, 245, 240, 0.6);
 }
@@ -464,6 +465,22 @@ nav a:hover {
     position: relative;
 }
 
+.stack-container {
+    flex: 1;
+    position: relative;
+    perspective: 2000px;
+    height: 100%;
+    z-index: 10;
+}
+
+.stack-container .right-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .book-page {
     flex: 1;
     height: 100%;
@@ -490,12 +507,36 @@ nav a:hover {
     transform-style: preserve-3d;
     transform-origin: left center;
     /* Flip around the spine */
-    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1), z-index 0s;
+    transition-delay: 0s, 0s;
 }
 
-/* The Flip State - Rotates the WHOLE container -180deg */
 .right-page.flipped {
     transform: rotateY(-180deg);
+    transition-delay: 0s, 0.6s;
+    /* Delay z-index change until halfway through flip */
+}
+
+/* Z-Index Logic for Book Stack */
+#page-1 {
+    z-index: 20;
+}
+
+#page-1.flipped {
+    z-index: 1;
+}
+
+#page-2 {
+    z-index: 10;
+}
+
+#page-2.flipped {
+    z-index: 2;
+    /* Must be higher than #page-1.flipped */
+}
+
+#page-base {
+    z-index: 0;
 }
 
 /* Common styles for faces */
@@ -548,10 +589,28 @@ nav a:hover {
    1. Position at 'right: 0' (which becomes visual left/outer corner when flipped).
    2. REMOVED scaleX(-1) because net rotation is 0deg.
 */
+/* Back Face: Position Back Button on the visual outer corner (left side of book) */
 .page-side.back .back-btn {
-    left: auto;
-    right: 0;
-    /* transform: scaleX(-1); <-- REMOVED */
+    left: 0;
+    right: auto;
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+/* Ensure only visible sides capture clicks */
+.page-side.front {
+    pointer-events: auto;
+}
+
+.right-page.flipped .page-side.front {
+    pointer-events: none;
+}
+
+.page-side.back {
+    pointer-events: none;
+}
+
+.right-page.flipped .page-side.back {
+    pointer-events: auto;
 }
 
 /* The Spine Shadow */
@@ -642,8 +701,15 @@ nav a:hover {
 
 /* Back button: Bottom Left (Standard positioning) */
 .back-btn {
-    left: 0;
-    clip-path: polygon(0 0, 0 100%, 100% 100%);
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-gold);
+    cursor: url('quill.svg') 12 56, pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    z-index: 30;
 }
 
 .read-more-btn:hover,
@@ -655,24 +721,180 @@ nav a:hover {
 
 /* --- Footer --- */
 footer {
-    padding: 6rem 2rem;
-    text-align: center;
+    padding: 6rem 2rem 2rem;
+    position: relative;
+    margin-top: 8rem;
     border-top: 1px solid rgba(74, 64, 58, 0.1);
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1.2fr 1fr;
+    gap: 4rem;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.footer-logo {
+    width: 100px;
+    height: auto;
+    mix-blend-mode: multiply;
+    margin-bottom: 0.5rem;
+}
+
+.footer-signoff {
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-light);
+    max-width: 300px;
+}
+
+.footer-heading {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
     font-size: 1rem;
     color: var(--text-light);
-    margin-top: 4rem;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
-.social-links {
-    margin-bottom: 2rem;
+.footer-links a:hover {
+    color: var(--accent-gold);
+    transform: translateX(10px);
 }
 
-.social-links a {
-    margin: 0 1.5rem;
-    font-style: italic;
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
+.footer-newsletter p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.5rem;
     position: relative;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-bottom: 1px solid var(--accent-gold);
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-bottom-width: 2px;
+}
+
+.newsletter-form button {
+    background: var(--accent-gold);
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    cursor: url('quill.svg') 12 56, pointer;
+    transition: background 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: var(--text-main);
+}
+
+.social-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.social-links-grid a {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-links-grid a:hover {
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px var(--glow-gold);
+}
+
+.footer-bottom {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(74, 64, 58, 0.05);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile Adjustments for Footer */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-column {
+        align-items: center;
+    }
+
+    .footer-signoff {
+        max-width: 100%;
+    }
+
+    .newsletter-form {
+        width: 100%;
+    }
+
+    .footer-links a:hover {
+        transform: none;
+        /* Disable translation on mobile center align */
+    }
 }
 
 /* Animations */
@@ -703,7 +925,8 @@ footer {
         display: none;
     }
 
-    .book-page {
+    .book-page,
+    .stack-container {
         min-height: 400px;
     }
 
@@ -729,7 +952,12 @@ footer {
     }
 
     header {
-        padding: 1rem 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .logo-image {
+        width: 80px;
+        /* Smaller logo for mobile to prevent overlapping content */
     }
 
     .hero h1 {
@@ -753,19 +981,15 @@ footer {
         height: 35px;
         background: rgba(255, 255, 255, 0.85);
         transform: translateY(-50%);
-        /* Reset scale transform if any */
     }
 
     .carousel-btn:hover {
         transform: translateY(-50%);
     }
 
-    /* Center the carousel items by adding padding to the container */
     .carousel-track-container {
         padding: 3rem calc(50% - 130px);
-        /* Centers the 260px card, adds vertical space */
         overflow-y: hidden;
-        /* disables vertical scroll */
     }
 
     .carousel-wrapper {
@@ -774,7 +998,6 @@ footer {
 
     .carousel-track {
         gap: 5rem;
-        /* Increase gap to Hide the 'peeking' next card */
     }
 
     .product-card {
@@ -790,6 +1013,73 @@ footer {
         background: none;
         border: none;
         z-index: 1002;
+    }
+
+    .about-section {
+        padding: 4rem 1rem 3rem;
+        /* Extra top padding for mobile */
+        perspective: none;
+    }
+
+    main {
+        padding-top: 60px;
+        /* Space for fixed header logo */
+    }
+
+    .book {
+        flex-direction: column;
+        height: auto;
+        gap: 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: visible;
+        background: #fffcf0;
+    }
+
+    .book-page,
+    .stack-container {
+        min-height: 450px;
+        position: relative;
+    }
+
+    .left-page {
+        border-radius: 8px 8px 0 0;
+        border-bottom: none;
+    }
+
+    .stack-container {
+        border-radius: 0 0 8px 8px;
+        height: auto;
+    }
+
+    .stack-container .right-page {
+        position: relative;
+        /* Stack normally on mobile */
+        top: auto;
+        left: auto;
+        min-height: 400px;
+    }
+
+    .right-page.flippable {
+        position: absolute !important;
+        /* Keep flippable pages absolute to allow overlap */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .about-image {
+        padding: 1.5rem;
+    }
+
+    .about-content,
+    .about-content-full {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .about-title {
+        font-size: 2.5rem;
     }
 
     .mobile-menu-btn span {
@@ -1081,8 +1371,8 @@ footer {
 
 /* --- Gold Text Reveal Effect --- */
 .gold-text-reveal {
-    /* Aspen Gold Gradient: Warmer, less lemon-yellow */
-    background: linear-gradient(90deg, #997F29, #FFD662, #FFF6D1, #FFD662, #997F29);
+    /* Aspen Gold Gradient: Darkened base for better visibility */
+    background: linear-gradient(90deg, #7A661F, #D4AF37, #FFF6D1, #D4AF37, #7A661F);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -1092,13 +1382,13 @@ footer {
     /* Animations: Shimmer + Reveal (Slowed down) */
     animation: goldShine 6s linear infinite, revealLeftToRight 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
-    /* Reveal mechanic */
-    clip-path: inset(0 100% 0 0);
+    /* Reveal mechanic (Negative vertical insets prevent descender clipping) */
+    clip-path: inset(-20% 100% -20% 0);
 
     /* Ensure no double text-shadow ghosts with transparent text */
     text-shadow: none !important;
     /* Use drop-shadow for the glow effect instead */
-    filter: drop-shadow(0 0 15px rgba(255, 214, 98, 0.4));
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
 
     /* Layout */
     display: inline-block;
@@ -1115,10 +1405,10 @@ footer {
 
 @keyframes revealLeftToRight {
     0% {
-        clip-path: inset(0 100% 0 0);
+        clip-path: inset(-20% 100% -20% 0);
     }
 
     100% {
-        clip-path: inset(0 0 0 0);
+        clip-path: inset(-20% 0 -20% 0);
     }
 }

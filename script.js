@@ -92,31 +92,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const books = document.querySelectorAll('.book');
 
     books.forEach(book => {
-        const flippable = book.querySelector('.flippable');
-        const readMore = book.querySelector('.read-more-btn');
-        const backBtn = book.querySelector('.back-btn');
-        const backSide = book.querySelector('.page-side.back');
+        const flippables = book.querySelectorAll('.flippable');
 
-        if (flippable && readMore) {
-            readMore.addEventListener('click', (e) => {
-                e.stopPropagation();
-                flippable.classList.add('flipped');
-            });
+        flippables.forEach(flippable => {
+            const readMore = flippable.querySelector('.read-more-btn');
+            const backBtn = flippable.querySelector('.back-btn');
+            const backSide = flippable.querySelector('.page-side.back');
+
+            if (readMore) {
+                readMore.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    flippable.classList.add('flipped');
+                });
+            }
 
             // Flip back when clicking the back button
             if (backBtn) {
                 backBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
                     e.stopPropagation();
                     flippable.classList.remove('flipped');
                 });
             }
 
-            // Also flip back when clicking anywhere on the back side for better UX
+            // Also flip back when clicking anywhere on the back side content
             if (backSide) {
-                backSide.addEventListener('click', () => {
-                    flippable.classList.remove('flipped');
+                backSide.addEventListener('click', (e) => {
+                    // Only flip back if we didn't click a specific link/button inside (though there are none currently)
+                    if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
+                        flippable.classList.remove('flipped');
+                    }
                 });
             }
-        }
+        });
     });
 });

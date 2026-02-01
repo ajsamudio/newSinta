@@ -27,7 +27,7 @@
             <ul>
                 <li><a href="#collection">Collection</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#giving-back">Giving Back</a></li>
+                <li><a href="#about">Giving Back</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -162,6 +162,7 @@
         </section>
 
         <!-- Marie's Story Section -->
+        <!-- Marie's Story & Giving Back Section -->
         <section class="about-section" id="about">
             <div class="book">
                 <div class="book-page left-page">
@@ -169,72 +170,54 @@
                         <img src="giving-back.jpg" alt="Marie Fran - Founder of Sinta by Marie">
                     </div>
                 </div>
-                <div class="book-page right-page flippable">
-                    <div class="page-side front">
-                        <div class="about-content">
-                            <h2 class="about-title">Marie's Story</h2>
-                            <div class="about-text">
-                                <p>Marie Fran is an artist and explorer, founder of Sinta by Marie.</p>
-                                <p>Moved by music and poetry, human connection, nature, and the quiet rhythm of
-                                    everyday life, she creates through deep noticing.</p>
-                                <p>Sinta by Marie is a space to honor what surrounds us and what is passed
-                                    down—transforming moments of presence, memory, and connection into wearable art.
-                                </p>
-                            </div>
-                            <button class="read-more-btn"></button>
-                        </div>
-                    </div>
-                    <div class="page-side back">
-                        <div class="about-content-full">
-                            <h2 class="about-title">Sinta by Marie's Story</h2>
-                            <div class="about-text">
-                                <p>Once upon a time, in the quiet corners of a sun-drenched studio, Sinta was born
-                                    from a desire to capture the ephemeral beauty of the world.</p>
-                                <p>Every piece tells a story of a moment noticed, a memory cherished, or a dream
-                                    whispered. Our process is slow, intentional, and deeply personal.</p>
-                                <p>We believe that jewelry should be more than an accessory; it should be a
-                                    companion on your journey, a reminder of your own unique story and the magic
-                                    that exists in the everyday.</p>
-                                <p>Thank you for being part of our story.</p>
-                            </div>
-                            <button class="back-btn"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Giving Back Section -->
-        <section class="about-section" id="giving-back">
-            <div class="book">
-                <div class="book-page left-page">
-                    <div class="about-image">
-                        <img src="giving-back.jpg" alt="Art That Gives Back">
-                    </div>
-                </div>
-                <div class="book-page right-page flippable">
-                    <div class="page-side front">
+                <div class="stack-container">
+                    <!-- Page 2: Giving Back Story (Static bottom page) -->
+                    <div class="book-page right-page" id="page-2">
                         <div class="about-content">
                             <h2 class="about-title">Art That Gives Back</h2>
                             <div class="about-text">
                                 <p>Sinta by Marie proudly supports "Marie's Little Library," a global initiative
                                     that brings books and art supplies to children around the world.</p>
                                 <p>Because stories, like jewelry, are meant to be shared.</p>
-                            </div>
-                            <button class="read-more-btn"></button>
-                        </div>
-                    </div>
-                    <div class="page-side back">
-                        <div class="about-content-full">
-                            <h2 class="about-title">Marie's Little Library</h2>
-                            <div class="about-text">
                                 <p>Our mission is to foster creativity and a love for reading in underserved
                                     communities. A portion of every Sinta purchase goes directly towards building
                                     small libraries and providing art kits to children.</p>
-                                <p>We believe that every child deserves the tools to tell their own story.</p>
-                                <p>Thank you for helping us make a difference.</p>
                             </div>
-                            <button class="back-btn"></button>
+                        </div>
+                    </div>
+
+                    <!-- Page 1: Marie's Story (Top) -->
+                    <div class="book-page right-page flippable" id="page-1">
+                        <div class="page-side front">
+                            <div class="about-content">
+                                <h2 class="about-title">Marie's Story</h2>
+                                <div class="about-text">
+                                    <p>Marie Fran is an artist and explorer, founder of Sinta by Marie.</p>
+                                    <p>Moved by music and poetry, human connection, nature, and the quiet rhythm of
+                                        everyday life, she creates through deep noticing.</p>
+                                    <p>Sinta by Marie is a space to honor what surrounds us and what is passed
+                                        down—transforming moments of presence, memory, and connection into wearable art.
+                                    </p>
+                                </div>
+                                <button class="read-more-btn"></button>
+                            </div>
+                        </div>
+                        <div class="page-side back">
+                            <div class="about-content-full">
+                                <h2 class="about-title">Sinta by Marie's Story</h2>
+                                <div class="about-text">
+                                    <p>Once upon a time, in the quiet corners of a sun-drenched studio, Sinta was born
+                                        from a desire to capture the ephemeral beauty of the world.</p>
+                                    <p>Every piece tells a story of a moment noticed, a memory cherished, or a dream
+                                        whispered. Our process is slow, intentional, and deeply personal.</p>
+                                    <p>We believe that jewelry should be more than an accessory; it should be a
+                                        companion on your journey, a reminder of your own unique story and the magic
+                                        that exists in the everyday.</p>
+                                    <p>Thank you for being part of our story.</p>
+                                </div>
+                                <button class="back-btn"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -242,13 +225,46 @@
         </section>
     </main>
 
-    <footer>
-        <div class="social-links">
-            <a href="#">Instagram</a>
-            <a href="#">Pinterest</a>
-            <a href="#">Email</a>
+    <footer class="faded-parchment">
+        <div class="footer-container">
+            <div class="footer-column footer-brand">
+                <img src="sinta-seal-pro.png" alt="Sinta Seal" class="footer-logo">
+                <p class="footer-signoff">Transforming moments of presence and memory into wearable art, crafted with
+                    intention in our sun-drenched studio.</p>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4 class="footer-heading">Explore</h4>
+                <ul>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="#about">Marie's Story</a></li>
+                    <li><a href="#about">Giving Back</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-newsletter">
+                <h4 class="footer-heading">Community</h4>
+                <p>Join "Letters from the Studio" for exclusive releases and stories of slow craft.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" aria-label="Email Address">
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+
+            <div class="footer-column footer-socials">
+                <h4 class="footer-heading">Connect</h4>
+                <div class="social-links-grid">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                    <a href="#">Shipping & Returns</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2026 Sinta by Marie. All rights reserved.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sinta by Marie. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
