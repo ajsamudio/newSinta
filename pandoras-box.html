@@ -8,17 +8,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet">
     <title>Pandora's Box | Sinta by Marie</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
     <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="sinta-seal-pro.png" alt="Sinta by Marie Logo" class="logo-image">
-            </a>
-        </div>
+        <a href="index.html" class="logo">
+            <div class="text-logo">
+                <span>Sinta Jewelry</span>
+                <span>by Marie</span>
+            </div>
+        </a>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
             <span></span>
             <span></span>
@@ -46,7 +47,10 @@
                 <div class="chapter-row">
                     <div class="chapter-frame">
                         <div class="chapter-img-container">
-                            <img src="product1.jpg" alt="Pandora's Box">
+                            <div class="text-logo" style="align-items: flex-start; margin-bottom: 1.5rem;">
+                                <span>Sinta Jewelry</span>
+                                <span>by Marie</span>
+                            </div>
                         </div>
                         <div class="chapter-content">
                             <span class="chapter-subtitle">Chapter I:</span>
@@ -65,7 +69,7 @@
                         </div>
                         <a href="#" class="visit-pill-btn">Visit ></a>
                         <div class="chapter-img-container">
-                            <img src="product2.jpg" alt="Cleopatra's Treasury">
+                            <img src="img/product2.jpg" alt="Cleopatra's Treasury">
                         </div>
                     </div>
                 </div>
@@ -74,7 +78,7 @@
                 <div class="chapter-row">
                     <div class="chapter-frame">
                         <div class="chapter-img-container">
-                            <img src="product3.jpg" alt="Juliet's Balcony">
+                            <img src="img/product3.jpg" alt="Juliet's Balcony">
                         </div>
                         <div class="chapter-content">
                             <span class="chapter-subtitle">Chapter III:</span>
@@ -93,7 +97,7 @@
                         </div>
                         <a href="#" class="visit-pill-btn">Visit ></a>
                         <div class="chapter-img-container">
-                            <img src="product1.jpg" alt="Puritas Pratasan">
+                            <img src="img/product1.jpg" alt="Puritas Pratasan">
                         </div>
                     </div>
                 </div>
@@ -101,9 +105,55 @@
         </section>
     </main>
 
+    <footer class="faded-parchment">
+        <div class="footer-container">
+            <div class="footer-column footer-brand">
+                <div class="text-logo">
+                    <span>Sinta Jewelry</span>
+                    <span>by Marie</span>
+                </div>
+                <p class="footer-signoff">Transforming moments of presence and memory into wearable art, crafted with
+                    intention in our sun-drenched studio.</p>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4 class="footer-heading">Explore</h4>
+                <ul>
+                    <li><a href="index.html#collection">Collection</a></li>
+                    <li><a href="index.html#about">Marie's Story</a></li>
+                    <li><a href="index.html#about">Giving Back</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-newsletter">
+                <h4 class="footer-heading">Community</h4>
+                <p>Join "Letters from the Studio" for exclusive releases and stories of slow craft.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" aria-label="Email Address">
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+
+            <div class="footer-column footer-socials">
+                <h4 class="footer-heading">Connect</h4>
+                <div class="social-links-grid">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                    <a href="#">Shipping & Returns</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sinta by Marie. All rights reserved.</p>
+        </div>
+    </footer>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="fireflies.js"></script>
-    <script src="script.js"></script>
+    <script src="js/fireflies.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

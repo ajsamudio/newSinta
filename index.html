@@ -9,15 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet">
     <title>Sinta by Marie | Handcrafted Jewelry</title>
     <meta name="description" content="Handcrafted jewelry inspired by nature, memory, and moments of presence.">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
     <header>
-        <div class="logo">
-            <img src="sinta-seal-pro.png" alt="Sinta by Marie Logo" class="logo-image">
-        </div>
+        <a href="index.html" class="logo">
+            <div class="text-logo">
+                <span>Sinta Jewelry</span>
+                <span>by Marie</span>
+            </div>
+        </a>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
             <span></span>
             <span></span>
@@ -37,11 +40,11 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-image-container">
-                <img src="hero-bg.jpg" alt="Ethereal golden hour landscape"
+                <img src="img/hero-bg.jpg" alt="Ethereal golden hour landscape"
                     style="width:100%; height:100%; object-fit:cover;">
             </div>
             <div class="hero-content faded-parchment">
-                <h1 class="gold-text-reveal">Future heirlooms, with a touch of magic.</h1>
+                <h1 class="gold-text-reveal">Timeless Jewelry, for your becoming</h1>
                 <p>Exquisite materials of earth and sea, crafted for the journey</p>
                 <a href="#collection" class="btn-primary">Enter the world of Sinta
                 </a>
@@ -63,10 +66,38 @@
 
                 <div class="carousel-track-container">
                     <div class="carousel-track">
-                        <!-- Item 1 -->
-                        <a href="celestial-court.html" class="product-card">
+                        <!-- Item 1: Siren's Shore -->
+                        <a href="sirens-shore.html" class="product-card">
                             <div class="product-image-wrapper">
-                                <img src="product1.jpg" alt="Lumina Pearl Necklace" class="product-image">
+                                <img src="img/Siren_s%20Shore/DSC02860.JPG" alt="Siren's Shore Jewel"
+                                    class="product-image">
+                                <div class="product-overlay">
+                                    <svg class="keyhole-icon" viewBox="0 0 100 100">
+                                        <path
+                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3 class="product-title">Siren’s Shore </h3>
+                        </a>
+
+                        <!-- Item 2: Cupid’s Garden -->
+                        <a href="cupids-garden.html" class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="img/product2.jpg" alt="Celestial Moonstone Necklace" class="product-image">
+                                <div class="product-overlay">
+                                    <svg class="keyhole-icon" viewBox="0 0 100 100">
+                                        <path
+                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <h3 class="product-title">Cupid’s Garden</h3>
+                        </a>
+
+                        <!-- Item 3: Celestial Court -->
+                        <a href="celestial-court.html" class="product-card">
+                            <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
                                         <path
@@ -76,24 +107,10 @@
                             </div>
                             <h3 class="product-title">Celestial Court</h3>
                         </a>
-                        <!-- Item 2 -->
-                        <div class="product-card">
-                            <div class="product-image-wrapper">
-                                <img src="product2.jpg" alt="Celestial Moonstone Necklace" class="product-image">
-                                <div class="product-overlay">
-                                    <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <h3 class="product-title">Siren’s Shore </h3>
 
-                        </div>
-                        <!-- Item 3 -->
+                        <!-- Item 4: Diwata’s Grove -->
                         <div class="product-card">
-                            <div class="product-image-wrapper">
-                                <img src="product3.jpg" alt="Seaside Opal Earrings" class="product-image">
+                            <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
                                         <path
@@ -102,12 +119,11 @@
                                 </div>
                             </div>
                             <h3 class="product-title">Diwata’s Grove</h3>
-
                         </div>
-                        <!-- Item 4 -->
+
+                        <!-- Item 5: Pandora's Box -->
                         <a href="pandoras-box.html" class="product-card">
-                            <div class="product-image-wrapper">
-                                <img src="product1.jpg" alt="Lumina Pearl Necklace" class="product-image">
+                            <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
                                         <path
@@ -116,26 +132,11 @@
                                 </div>
                             </div>
                             <h3 class="product-title">Pandora's Box</h3>
-
                         </a>
-                        <!-- Item 5 -->
-                        <div class="product-card">
-                            <div class="product-image-wrapper">
-                                <img src="product2.jpg" alt="Celestial Moonstone Necklace" class="product-image">
-                                <div class="product-overlay">
-                                    <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <h3 class="product-title">Cupid’s Garden</h3>
 
-                        </div>
-                        <!-- Item 6 -->
+                        <!-- Item 6: Songbird’s Hollow -->
                         <div class="product-card">
-                            <div class="product-image-wrapper">
-                                <img src="product3.jpg" alt="Seaside Opal Earrings" class="product-image">
+                            <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
                                         <path
@@ -144,7 +145,6 @@
                                 </div>
                             </div>
                             <h3 class="product-title">Songbird’s Hollow</h3>
-
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
             <div class="book">
                 <div class="book-page left-page">
                     <div class="about-image">
-                        <img src="giving-back.jpg" alt="Marie Fran - Founder of Sinta by Marie">
+                        <img src="img/giving-back.jpg" alt="Marie Fran - Founder of Sinta by Marie">
                     </div>
                 </div>
 
@@ -228,7 +228,10 @@
     <footer class="faded-parchment">
         <div class="footer-container">
             <div class="footer-column footer-brand">
-                <img src="sinta-seal-pro.png" alt="Sinta Seal" class="footer-logo">
+                <div class="text-logo">
+                    <span>Sinta Jewelry</span>
+                    <span>by Marie</span>
+                </div>
                 <p class="footer-signoff">Transforming moments of presence and memory into wearable art, crafted with
                     intention in our sun-drenched studio.</p>
             </div>
@@ -268,8 +271,8 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="fireflies.js"></script>
-    <script src="script.js"></script>
+    <script src="js/fireflies.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

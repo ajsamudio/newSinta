@@ -127,4 +127,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Header Scroll Logic ---
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+
+    if (header) {
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const isMobileMenuOpen = navUl && navUl.classList.contains('show');
+
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down - hide header unless mobile menu is open
+                if (!isMobileMenuOpen) {
+                    header.classList.add('header-hidden');
+                }
+            } else {
+                // Scrolling up - always show header
+                header.classList.remove('header-hidden');
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        }, { passive: true });
+    }
 });

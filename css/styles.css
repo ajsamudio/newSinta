@@ -34,7 +34,7 @@
 
 body {
     background-color: var(--bg-cream);
-    background-image: url('background-main.jpg');
+    background-image: url('../img/background-main.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -43,7 +43,7 @@ body {
     line-height: 1.8;
     overflow-x: hidden;
     font-size: 18px;
-    cursor: url('quill.svg') 12 56, auto;
+    cursor: url('../img/quill.svg') 12 56, auto;
 }
 
 h1,
@@ -67,7 +67,7 @@ a {
 a,
 button,
 [role="button"] {
-    cursor: url('quill.svg') 12 56, pointer;
+    cursor: url('../img/quill.svg') 12 56, pointer;
 }
 
 /* --- Header --- */
@@ -80,10 +80,15 @@ header {
     background: linear-gradient(to bottom, rgba(249, 245, 240, 0.8) 0%, rgba(249, 245, 240, 0) 90%);
     backdrop-filter: blur(2px);
     z-index: 1000;
-    transition: all 0.5s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none;
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+header.header-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
 }
 
 header .logo,
@@ -104,19 +109,36 @@ header:hover {
 .logo {
     margin-bottom: 0.5rem;
     display: inline-block;
-    cursor: url('quill.svg') 12 56, pointer;
+    cursor: url('../img/quill.svg') 12 56, pointer;
     transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.text-logo {
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    font-size: 2rem;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 0 0 10px var(--glow-gold);
+}
+
+.text-logo span:first-child {
+    font-size: 2.2rem;
+    letter-spacing: 0.05em;
+}
+
+.text-logo span:last-child {
+    font-size: 1.7rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+    opacity: 0.9;
 }
 
 .logo-image {
-    width: 125px;
-    height: auto;
-    display: block;
-    mix-blend-mode: multiply;
-    filter: brightness(1.08) contrast(1.05);
-    /* Increases whites to absolute white for multiply blend */
-    clip-path: circle(48%);
-    /* Physically removes the square corners of the image */
+    display: none;
 }
 
 header:hover .logo {
@@ -228,7 +250,7 @@ nav a:hover {
     left: -5%;
     right: -5%;
     bottom: -5%;
-    background-image: url('parchment-smooth.png');
+    background-image: url('../img/parchment-smooth.png');
     background-size: cover;
     background-position: center;
     background-color: rgba(255, 248, 225, 0.7);
@@ -327,7 +349,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: url('quill.svg') 12 56, pointer;
+    cursor: url('../img/quill.svg') 12 56, pointer;
     z-index: 10;
     transition: all 0.3s ease;
     box-shadow: inset 0 0 0 2px var(--bg-cream), inset 0 0 0 3px var(--accent-gold);
@@ -357,6 +379,10 @@ nav a:hover {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.product-image-wrapper.black-circle {
+    background: #000 !important;
 }
 
 .product-image {
@@ -486,7 +512,7 @@ nav a:hover {
     height: 100%;
     position: relative;
     background: #fffcf0;
-    background-image: url('parchment-smooth.png');
+    background-image: url('../img/parchment-smooth.png');
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(74, 64, 58, 0.1);
@@ -549,7 +575,7 @@ nav a:hover {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     background: #fffcf0;
-    background-image: url('parchment-smooth.png');
+    background-image: url('../img/parchment-smooth.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -687,7 +713,7 @@ nav a:hover {
     width: 100px;
     height: 100px;
     background: var(--accent-gold);
-    cursor: url('quill.svg') 12 56, pointer;
+    cursor: url('../img/quill.svg') 12 56, pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
     z-index: 30;
@@ -706,7 +732,7 @@ nav a:hover {
     width: 100px;
     height: 100px;
     background: var(--accent-gold);
-    cursor: url('quill.svg') 12 56, pointer;
+    cursor: url('../img/quill.svg') 12 56, pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
     z-index: 30;
@@ -746,11 +772,20 @@ footer {
     gap: 1.5rem;
 }
 
-.footer-logo {
-    width: 100px;
-    height: auto;
-    mix-blend-mode: multiply;
-    margin-bottom: 0.5rem;
+.footer-brand .text-logo {
+    font-size: 2.2rem;
+    align-items: flex-start;
+}
+
+.footer-brand .text-logo span:first-child {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.footer-brand .text-logo span:last-child {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
 }
 
 .footer-signoff {
@@ -826,7 +861,7 @@ footer {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 600;
-    cursor: url('quill.svg') 12 56, pointer;
+    cursor: url('../img/quill.svg') 12 56, pointer;
     transition: background 0.3s ease;
 }
 
@@ -1136,14 +1171,227 @@ footer {
 
 .grid-item {
     width: 100%;
-    aspect-ratio: 0.8;
-    /* Portrait/Rectangular box */
-    border: 2px solid var(--text-main);
     background: transparent;
-    /* Hand-drawn feel */
-    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-    border: 2px solid #4A403A;
-    transition: transform 0.3s ease;
+    border-radius: 0;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(212, 175, 55, 0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden;
+}
+
+/* Remove gold border for specific grids */
+.product-grid.no-border .grid-item {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.grid-item.hover-reveal {
+    position: relative;
+}
+
+.grid-item.hover-reveal .secondary-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.grid-item.hover-reveal:hover .secondary-img {
+    opacity: 1;
+}
+
+.grid-item.hover-reveal:hover .primary-img {
+    opacity: 0;
+    /* Optional: hide primary or keep underneath */
+}
+
+.grid-item.hover-reveal-multi {
+    position: relative;
+}
+
+.grid-item.hover-reveal-multi img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.grid-item.hover-reveal-multi img:first-child {
+    position: relative;
+    opacity: 1;
+}
+
+.grid-item.hover-reveal-multi:hover img {
+    animation: multi-cross-fade 3s infinite;
+}
+
+.grid-item.hover-reveal-multi:hover img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.grid-item.hover-reveal-multi:hover img:nth-child(2) {
+    animation-delay: -2s;
+}
+
+.grid-item.hover-reveal-multi:hover img:nth-child(3) {
+    animation-delay: -1s;
+}
+
+/* 4-Image Crossfade */
+.grid-item.hover-reveal-multi-4 {
+    position: relative;
+}
+
+.grid-item.hover-reveal-multi-4 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.grid-item.hover-reveal-multi-4 img:first-child {
+    position: relative;
+    opacity: 1;
+}
+
+.grid-item.hover-reveal-multi-4:hover img {
+    animation: multi-cross-fade-4 4s infinite;
+}
+
+.grid-item.hover-reveal-multi-4:hover img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.grid-item.hover-reveal-multi-4:hover img:nth-child(2) {
+    animation-delay: -3s;
+}
+
+.grid-item.hover-reveal-multi-4:hover img:nth-child(3) {
+    animation-delay: -2s;
+}
+
+.grid-item.hover-reveal-multi-4:hover img:nth-child(4) {
+    animation-delay: -1s;
+}
+
+@keyframes multi-cross-fade-4 {
+
+    0%,
+    20% {
+        opacity: 1;
+        z-index: 10;
+    }
+
+    25%,
+    95% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        opacity: 1;
+        z-index: 10;
+    }
+}
+
+
+/* 2-Image Crossfade */
+.grid-item.hover-reveal-multi-2 {
+    position: relative;
+}
+
+.grid-item.hover-reveal-multi-2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.grid-item.hover-reveal-multi-2 img:first-child {
+    position: relative;
+    opacity: 1;
+}
+
+.grid-item.hover-reveal-multi-2:hover img {
+    animation: multi-cross-fade-2 3s infinite;
+}
+
+.grid-item.hover-reveal-multi-2:hover img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.grid-item.hover-reveal-multi-2:hover img:nth-child(2) {
+    animation-delay: -1.5s;
+}
+
+@keyframes multi-cross-fade-2 {
+
+    0%,
+    45% {
+        opacity: 1;
+        z-index: 10;
+    }
+
+    50%,
+    95% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        opacity: 1;
+        z-index: 10;
+    }
+}
+
+
+@keyframes multi-cross-fade {
+
+    0%,
+    28% {
+        opacity: 1;
+        z-index: 10;
+    }
+
+    33%,
+    95% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        opacity: 1;
+        z-index: 10;
+    }
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.05);
+    /* Slight zoom on hover */
 }
 
 .grid-item:hover {
@@ -1398,8 +1646,12 @@ footer {
 }
 
 @keyframes goldShine {
-    to {
+    from {
         background-position: 200% center;
+    }
+
+    to {
+        background-position: 0% center;
     }
 }
 
