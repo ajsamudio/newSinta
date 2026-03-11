@@ -14,6 +14,12 @@
 
 <body>
 
+    <svg style="display:none">
+        <symbol id="keyhole-symbol" viewBox="0 0 100 100">
+            <path d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+        </symbol>
+    </svg>
+
     <header>
         <a href="index.html" class="logo">
             <div class="text-logo">
@@ -30,7 +36,7 @@
             <ul>
                 <li><a href="#collection">Collection</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#about">Giving Back</a></li>
+                <li><a href="#giving-back">Giving Back</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -40,14 +46,17 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-image-container">
-                <img src="img/hero-bg.jpg" alt="Ethereal golden hour landscape"
-                    style="width:100%; height:100%; object-fit:cover;">
+                <img src="img/hero-bg.jpg" alt="Ethereal golden hour landscape">
             </div>
             <div class="hero-content faded-parchment">
                 <h1 class="gold-text-reveal">Timeless Jewelry, for your becoming</h1>
                 <p>Exquisite materials of earth and sea, crafted for the journey</p>
-                <a href="#collection" class="btn-primary">Enter the world of Sinta
-                </a>
+                <a href="#collection" class="btn-primary">Enter the world of Sinta</a>
+                <div class="scroll-indicator" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
             </div>
         </section>
 
@@ -73,8 +82,7 @@
                                     class="product-image">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                        <use href="#keyhole-symbol" />
                                     </svg>
                                 </div>
                             </div>
@@ -87,8 +95,7 @@
                                 <img src="img/product2.jpg" alt="Celestial Moonstone Necklace" class="product-image">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                        <use href="#keyhole-symbol" />
                                     </svg>
                                 </div>
                             </div>
@@ -100,8 +107,7 @@
                             <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                        <use href="#keyhole-symbol" />
                                     </svg>
                                 </div>
                             </div>
@@ -113,8 +119,7 @@
                             <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                        <use href="#keyhole-symbol" />
                                     </svg>
                                 </div>
                             </div>
@@ -126,8 +131,7 @@
                             <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                        <use href="#keyhole-symbol" />
                                     </svg>
                                 </div>
                             </div>
@@ -139,8 +143,7 @@
                             <div class="product-image-wrapper black-circle">
                                 <div class="product-overlay">
                                     <svg class="keyhole-icon" viewBox="0 0 100 100">
-                                        <path
-                                            d="M50 10a25 25 0 0 0-25 25c0 10.5 6.5 19.5 15.5 23L30 90h40L60 58c9-3.5 15.5-12.5 15.5-23a25 25 0 0 0-25-25z" />
+                                        <use href="#keyhole-symbol" />
                                     </svg>
                                 </div>
                             </div>
@@ -156,12 +159,20 @@
                 </button>
             </div>
 
-            <div style="text-align: center; margin-top: 3rem;">
+            <div class="collection-cta">
                 <a href="#" class="btn-primary">Explore the Collection</a>
+            </div>
+
+            <div class="carousel-dots" aria-hidden="true">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </section>
 
-        <!-- Marie's Story Section -->
         <!-- Marie's Story & Giving Back Section -->
         <section class="about-section" id="about">
             <div class="book">
@@ -173,7 +184,7 @@
 
                 <div class="stack-container">
                     <!-- Page 2: Giving Back Story (Static bottom page) -->
-                    <div class="book-page right-page" id="page-2">
+                    <div id="giving-back" class="book-page right-page" style="scroll-margin-top: 80px;">
                         <div class="about-content">
                             <h2 class="about-title">Art That Gives Back</h2>
                             <div class="about-text">
@@ -200,7 +211,7 @@
                                         down—transforming moments of presence, memory, and connection into wearable art.
                                     </p>
                                 </div>
-                                <button class="read-more-btn"></button>
+                                <button class="read-more-btn">Read More &rarr;</button>
                             </div>
                         </div>
                         <div class="page-side back">
@@ -216,16 +227,17 @@
                                         that exists in the everyday.</p>
                                     <p>Thank you for being part of our story.</p>
                                 </div>
-                                <button class="back-btn"></button>
                             </div>
+                            <button class="back-btn">&larr; Back</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="faded-parchment">
+    <footer class="faded-parchment" id="contact">
         <div class="footer-container">
             <div class="footer-column footer-brand">
                 <div class="text-logo">
@@ -241,7 +253,7 @@
                 <ul>
                     <li><a href="#collection">Collection</a></li>
                     <li><a href="#about">Marie's Story</a></li>
-                    <li><a href="#about">Giving Back</a></li>
+                    <li><a href="#giving-back">Giving Back</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
