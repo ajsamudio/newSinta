@@ -1673,7 +1673,7 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 5rem;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     border: 1px solid rgba(212, 175, 55, 0.2);
@@ -2162,4 +2162,10 @@ footer {
     .scroll-indicator {
         margin-top: 1.5rem;
     }
+}
+
+.grid-item-link {
+    display: contents;
+    color: inherit;
+    text-decoration: none;
 }
