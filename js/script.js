@@ -62,6 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 menuBtn.classList.remove('active');
             }
         });
+
+        // Close menu when a nav link is tapped
+        navUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('show');
+                menuBtn.classList.remove('active');
+            });
+        });
     }
 
     // --- Carousel Logic ---
@@ -69,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.carousel-track');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
 
     if (trackContainer && track && prevBtn && nextBtn) {
-        // Function to get exact scroll amount (card width + gap)
         const getScrollAmount = () => {
             const card = document.querySelector('.product-card');
             if (!card) return 300;
@@ -79,12 +87,42 @@ document.addEventListener('DOMContentLoaded', () => {
             return card.offsetWidth + gap;
         };
 
+        // Update dots and button boundary states
+        const updateCarouselState = () => {
+            const scrollAmount = getScrollAmount();
+            const index = Math.round(trackContainer.scrollLeft / scrollAmount);
+            dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+            const atStart = trackContainer.scrollLeft <= 0;
+            const atEnd = trackContainer.scrollLeft >= trackContainer.scrollWidth - trackContainer.clientWidth - 1;
+            prevBtn.classList.toggle('disabled', atStart);
+            nextBtn.classList.toggle('disabled', atEnd);
+            prevBtn.setAttribute('aria-disabled', atStart);
+            nextBtn.setAttribute('aria-disabled', atEnd);
+        };
+
+        // Initial state
+        prevBtn.classList.add('disabled');
+        prevBtn.setAttribute('aria-disabled', true);
+
+        trackContainer.addEventListener('scroll', updateCarouselState, { passive: true });
+
         nextBtn.addEventListener('click', () => {
             trackContainer.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
         });
 
         prevBtn.addEventListener('click', () => {
             trackContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
+
+        // Touch/pointer swipe support
+        let pointerStartX = 0;
+        trackContainer.addEventListener('pointerdown', e => { pointerStartX = e.clientX; });
+        trackContainer.addEventListener('pointerup', e => {
+            const diff = pointerStartX - e.clientX;
+            if (Math.abs(diff) > 40) {
+                trackContainer.scrollBy({ left: diff > 0 ? getScrollAmount() : -getScrollAmount(), behavior: 'smooth' });
+            }
         });
     }
 

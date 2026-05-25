@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Alice&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <title>Product Name | Sinta by Marie</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Small local overrides for the template */
+        .swatch.gold {
+            background-color: #D4AF37;
+        }
+
+        .swatch.silver {
+            background-color: #C0C0C0;
+        }
+
+        .swatch.rose {
+            background-color: #E0C0B1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <div class="text-logo">
+                <span>Sinta Jewelry</span>
+                <span>by Marie</span>
+            </div>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="index.html#collection">Collection</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#giving-back">Giving Back</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="product-detail-container">
+            <!-- Left: Gallery -->
+            <div class="product-gallery">
+                <div class="thumbnail-stack">
+                    <img src="img/Siren_s%20Shore/DSC02854.JPG" alt="Thumbnail 1" class="active"
+                        onclick="changeImage(this.src, this)">
+                    <img src="img/Siren_s%20Shore/DSC02856.JPG" alt="Thumbnail 2" onclick="changeImage(this.src, this)">
+                    <img src="img/Siren_s%20Shore/DSC02860.JPG" alt="Thumbnail 3" onclick="changeImage(this.src, this)">
+                    <img src="img/Siren_s%20Shore/DSC02859.JPG" alt="Thumbnail 4" onclick="changeImage(this.src, this)">
+                    <img src="img/Siren_s%20Shore/DSC02858.JPG" alt="Thumbnail 5" onclick="changeImage(this.src, this)">
+                </div>
+                <div class="main-image-container">
+                    <img id="main-product-image" src="img/Siren_s%20Shore/DSC02854.JPG" alt="Main Product Image">
+                </div>
+            </div>
+
+            <!-- Right: Info -->
+            <div class="product-info">
+                <div class="product-rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="review-count">(12 Reviews)</span>
+                </div>
+                <h1 class="product-name">Moonlit Pearl Necklace</h1>
+                <div class="product-price">$888</div>
+
+                <div class="product-material-selector">
+                    <span class="material-label">Material: 14K Gold Fill</span>
+                    <div class="color-swatches">
+                        <div class="swatch gold active" title="14K Gold Fill"></div>
+                        <div class="swatch silver" title="Sterling Silver"></div>
+                        <div class="swatch rose" title="14K Rose Gold Fill"></div>
+                    </div>
+                </div>
+
+                <div class="add-to-cart-container">
+                    <button class="btn-primary add-to-cart-btn">Add to Cart</button>
+                </div>
+
+                <div class="product-meta-badges">
+                    <div class="meta-badge">
+                        <span>🚚</span>
+                        <span>Free US shipping on orders over $200</span>
+                    </div>
+                    <div class="meta-badge">
+                        <span>🛡️</span>
+                        <span>2 year Warranty</span>
+                    </div>
+                </div>
+
+                <div class="product-accordions">
+                    <div class="accordion-item">
+                        <button class="accordion-header">About the Product</button>
+                        <div class="accordion-content">
+                            <p>Hand-selected freshwater pearls suspended on a delicate 14k gold-filled chain. Each pearl
+                                carries its own unique luster and shape, making every piece a one-of-a-kind treasure
+                                from the sea.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Specs</button>
+                        <div class="accordion-content">
+                            <p>• 16-18 inch adjustable chain<br>• 8mm freshwater pearls<br>• Secure lobster claw
+                                clasp<br>• Hypoallergenic and tarnish-resistant</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Materials & Care</button>
+                        <div class="accordion-content">
+                            <p>Our gold-fill jewelry is crafted to last. To maintain the luster of your pearls, avoid
+                                direct contact with perfumes and lotions. Clean with a soft, damp cloth after wearing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frequently Bought Together -->
+        <section class="buying-extras">
+            <h2 class="extras-title">Frequently Bought Together</h2>
+            <div class="frequently-bought-grid">
+                <div class="extra-card">
+                    <div class="extra-img-wrap">
+                        <img src="img/Siren_s%20Shore/DSC02867.JPG" alt="Matching Earrings">
+                    </div>
+                    <h3 class="extra-name">Siren Earrings</h3>
+                    <p class="extra-price">$45.00</p>
+                </div>
+                <div class="extra-card">
+                    <div class="extra-img-wrap">
+                        <img src="img/Siren_s%20Shore/DSC02869.JPG" alt="Matching Bracelet">
+                    </div>
+                    <h3 class="extra-name">Tide Bracelet</h3>
+                    <p class="extra-price">$62.00</p>
+                </div>
+                <div class="extra-card">
+                    <div class="extra-img-wrap">
+                        <img src="img/Siren_s%20Shore/DSC02872.JPG" alt="Gift Box">
+                    </div>
+                    <h3 class="extra-name">Luxe Gift Wrap</h3>
+                    <p class="extra-price">$12.00</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Collection Banner -->
+        <section class="banner-feature" style="background-image: url('img/Siren_s%20Shore/DSC03002.JPG');">
+            <div class="banner-content">
+                <h2>New Collection Coming Soon</h2>
+                <p>Sign up for early access to the "Tides of Time" series.</p>
+            </div>
+        </section>
+
+        <!-- You May Also Like -->
+        <section class="buying-extras">
+            <h2 class="extras-title">You may also like</h2>
+            <div class="product-grid no-border you-may-like-grid">
+                <div class="grid-item">
+                    <img src="img/Siren_s%20Shore/DSC03100.JPG" alt="Similar Item 1">
+                </div>
+                <div class="grid-item">
+                    <img src="img/Siren_s%20Shore/DSC03091.JPG" alt="Similar Item 2">
+                </div>
+                <div class="grid-item">
+                    <img src="img/Siren_s%20Shore/DSC03079.JPG" alt="Similar Item 3">
+                </div>
+                <div class="grid-item">
+                    <img src="img/Siren_s%20Shore/DSC03070.JPG" alt="Similar Item 4">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="faded-parchment">
+        <!-- Footer content same as other pages -->
+        <div class="footer-container">
+            <div class="footer-column footer-brand">
+                <div class="text-logo">
+                    <span>Sinta Jewelry</span>
+                    <span>by Marie</span>
+                </div>
+                <p class="footer-signoff">Transforming moments of presence and memory into wearable art, crafted with
+                    intention in our sun-drenched studio.</p>
+            </div>
+            <div class="footer-column footer-links">
+                <h4 class="footer-heading">Explore</h4>
+                <ul>
+                    <li><a href="index.html#collection">Collection</a></li>
+                    <li><a href="index.html#about">Marie's Story</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-newsletter">
+                <h4 class="footer-heading">Community</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+            <div class="footer-column footer-socials">
+                <h4 class="footer-heading">Connect</h4>
+                <div class="social-links-grid">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sinta by Marie. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script>
+        // Load product data from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = products[productId] || products['moonlit-pearl']; // Fallback to pearl if not found
+
+        // Populate DOM
+        if (product) {
+            document.title = `${product.name} | Sinta by Marie`;
+            document.querySelector('.product-name').textContent = product.name;
+            document.querySelector('.product-price').textContent = product.price;
+            document.querySelector('.material-label').textContent = 'Material: ' + product.material;
+
+            // Populate Accordions
+            const accordions = document.querySelectorAll('.accordion-content');
+            accordions[0].innerHTML = `<p>${product.description}</p>`;
+            accordions[1].innerHTML = `<p>${product.specs}</p>`;
+            accordions[2].innerHTML = `<p>${product.care}</p>`;
+
+            // Populate Gallery
+            const mainImg = document.getElementById('main-product-image');
+            const thumbStack = document.querySelector('.thumbnail-stack');
+
+            mainImg.src = product.images[0];
+            thumbStack.innerHTML = product.images.map((src, index) =>
+                `<img src="${src}" alt="Thumbnail ${index + 1}" class="${index === 0 ? 'active' : ''}" onclick="changeImage('${src}', this)">`
+            ).join('');
+        }
+
+        // Image gallery logic
+        function changeImage(src, thumb) {
+            document.getElementById('main-product-image').src = src;
+            document.querySelectorAll('.thumbnail-stack img').forEach(img => img.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
+        // Accordion logic
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Swatch logic
+        document.querySelectorAll('.swatch').forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+                swatch.classList.add('active');
+                const material = swatch.getAttribute('title');
+                document.querySelector('.material-label').textContent = 'Material: ' + material;
+            });
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
