@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet">
     <title>Pandora's Box | Sinta by Marie</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.min.css">
 </head>
 
 <body>
@@ -69,7 +69,10 @@
                         </div>
                         <a href="#" class="visit-pill-btn">Visit ></a>
                         <div class="chapter-img-container">
-                            <img src="img/product2.jpg" alt="Cleopatra's Treasury">
+                            <picture>
+                                <source srcset="img/product2.webp" type="image/webp">
+                                <img src="img/product2.jpg" alt="Cleopatra's Treasury" loading="lazy">
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -78,7 +81,10 @@
                 <div class="chapter-row">
                     <div class="chapter-frame">
                         <div class="chapter-img-container">
-                            <img src="img/product3.jpg" alt="Juliet's Balcony">
+                            <picture>
+                                <source srcset="img/product3.webp" type="image/webp">
+                                <img src="img/product3.jpg" alt="Juliet's Balcony" loading="lazy">
+                            </picture>
                         </div>
                         <div class="chapter-content">
                             <span class="chapter-subtitle">Chapter III:</span>
@@ -97,7 +103,10 @@
                         </div>
                         <a href="#" class="visit-pill-btn">Visit ></a>
                         <div class="chapter-img-container">
-                            <img src="img/product1.jpg" alt="Puritas Pratasan">
+                            <picture>
+                                <source srcset="img/product1.webp" type="image/webp">
+                                <img src="img/product1.jpg" alt="Puritas Pratasan" loading="lazy">
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -152,8 +161,8 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/fireflies.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/fireflies.min.js"></script>
+    <script src="js/script.min.js"></script>
 </body>
 
 </html>

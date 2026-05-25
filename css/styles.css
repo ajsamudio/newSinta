@@ -34,7 +34,7 @@
 
 body {
     background-color: var(--bg-cream);
-    background-image: url('../img/background-main.jpg');
+    background-image: image-set(url('../img/background-main.webp') type('image/webp'), url('../img/background-main.jpg') type('image/jpeg'));
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -195,8 +195,8 @@ nav a:hover {
     width: 100%;
     height: 100%;
     z-index: -1;
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
 .hero-image-container::after {
@@ -246,22 +246,28 @@ nav a:hover {
 .faded-parchment::before {
     content: '';
     position: absolute;
-    top: -5%;
-    left: -5%;
-    right: -5%;
-    bottom: -5%;
-    background-image: url('../img/parchment-smooth.png');
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: image-set(url('../img/parchment-smooth.webp') type('image/webp'), url('../img/parchment-smooth.png') type('image/png'));
     background-size: cover;
     background-position: center;
-    background-color: rgba(255, 248, 225, 0.7);
-    /* Warmer, slightly more opaque yellow */
+    background-color: rgba(255, 248, 225, 0.35);
     background-blend-mode: multiply;
-    /* Better texture visibility */
     z-index: -1;
-    /* Light feathering on borders: defined center, soft edge */
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.55;
+    /* Long linear top/bottom fade — kills visible band between adjacent parchment sections */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
     pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .faded-parchment::before {
+        opacity: 0.4;
+        background-color: rgba(255, 248, 225, 0.25);
+    }
 }
 
 /* --- Collection Carousel --- */
@@ -512,7 +518,7 @@ nav a:hover {
     height: 100%;
     position: relative;
     background: #fffcf0;
-    background-image: url('../img/parchment-smooth.png');
+    background-image: image-set(url('../img/parchment-smooth.webp') type('image/webp'), url('../img/parchment-smooth.png') type('image/png'));
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(74, 64, 58, 0.1);
@@ -575,7 +581,7 @@ nav a:hover {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     background: #fffcf0;
-    background-image: url('../img/parchment-smooth.png');
+    background-image: image-set(url('../img/parchment-smooth.webp') type('image/webp'), url('../img/parchment-smooth.png') type('image/png'));
     background-size: cover;
     background-position: center;
     display: flex;

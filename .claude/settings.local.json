@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where cwebp *)",
+      "Bash(where magick *)",
+      "Bash(where ffmpeg *)",
+      "Bash(where node *)",
+      "Bash(where python *)",
+      "Bash(python -c \"from PIL import Image; print\\(Image.__version__\\)\")",
+      "Bash(python scripts/webp_convert.py)",
+      "Bash(python scripts/html_picturize.py)"
+    ]
+  }
+}
