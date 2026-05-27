@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     books.forEach(book => {
         const flippables = book.querySelectorAll('.flippable');
+        const mobileBackBtn = book.querySelector('.mobile-back-btn');
 
         flippables.forEach(flippable => {
             const readMore = flippable.querySelector('.read-more-btn');
@@ -141,11 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 readMore.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    flippable.classList.add('flipped');
+                    flippable.classList.toggle('flipped');
                 });
             }
 
-            // Flip back when clicking the back button
             if (backBtn) {
                 backBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -154,13 +154,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Also flip back when clicking anywhere on the back side content
             if (backSide) {
                 backSide.addEventListener('click', (e) => {
-                    // Only flip back if we didn't click a specific link/button inside (though there are none currently)
                     if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON') {
                         flippable.classList.remove('flipped');
                     }
+                });
+            }
+
+            // Mobile-only back button on page-2 (back face often doesn't render
+            // reliably on mobile, so this gives the user a direct way back).
+            if (mobileBackBtn) {
+                mobileBackBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    flippable.classList.remove('flipped');
                 });
             }
         });
